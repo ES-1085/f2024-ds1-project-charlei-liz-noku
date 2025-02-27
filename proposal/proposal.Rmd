@@ -1,6 +1,6 @@
 ---
 title: "Project proposal"
-author: "Team name"
+author: "Charlie-Liz-Noku"
 output: html_document
 ---
 
@@ -11,7 +11,17 @@ library(broom)
 
 ## 1. Introduction
 
-Text goes here. Refer to the Markdown Quick Reference: Help -> Markdown Quick Reference. 
+The Healthy Androscoggin project analyzes the Maine Integrated Youth Survey (MIYHS) data from 2009 in order to identify trends of activity,  nutrition substance/drug use, and overall environmental health. The goal is find areas of necessary intervention and promote policy  change to build healtheir comminities in the Androscoggin Commnunity.
+
+Data was collected through a number of surveys offered in all grades/ages of High-School across several years. The survey asked a vast number of questions ranging all the way from, "Do you smoke?" to "What is the primary language spoken at home?". Our dataset deals with 10 years of data, we are choosing to focus predominantly on the results from smoking related questions in order to prove whether intervention is necessary at an educational level. 
+
+If we focus mainly on younger aged kids for our surveys, will the level of tobacco awareness be consistently lower?
+
+What change would be most effective in increaseing the amount of drugs (lbs) disposed of at the Drug Take-Back days?
+(Does a decrease in drugs given back mean there are less drugs on the streets?)
+
+
+
 
 ## 2. Data
 
