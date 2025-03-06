@@ -1,13 +1,33 @@
 # data
 
-Place data file(s) in this folder.
+Data file called 2009-2021_smoked_formatted.csv is stored within this Data folder. 
 
-Then, include codebooks (variables, and their descriptions) for your data file(s)
-using the following format.
+## 2009-2021_smoked_formatted.csv
 
-## name of data file
+- `Year`: Refers to the year when the survey took place 
+- `Gender`: Refers to the gender of the person whose response is stored. Only possible options are Female, Male and Total, which represents Female and Male answers together
+- `Category`: Given the format of community-provided data, this variable represents specific subsection of population we are looking at. Possible options are Age, Grade (in scool), Race/Ethnicity of a specific person answering the questionnare. 
+- `Subcategory`: Refers to more specific subsection of population within chosen category. Possible answers are specific age such as "14 or younger" (Age), "12"" (grade in school), "Hispanic" (Race/Ethnicity)
+- `X.`: Refers to the percentage of students who answered at least one day to the posed question. In this specific case, the question was: "During the past 30 days, on how many days did you smoke cigarettes?" 
+- `Confidence.Interval`: Refers to the 95% Confidence Interval, which is the values within which the true smoking rate in the chosenpopulation is likely to fall.
+- `Number.of.Students`: Refers to the number of students who answered at least 1 day to the posed question (weighted).
 
-- `variable1`: Description of variable 1
-- `variable2`: Description of variable 2
-- `variable3`: Description of variable 3
-- ...
+Below is a quick overview of the data using `dim()` and `glimpse()`:
+
+Rows: 205 Columns: 7
+
+glimpse()
+
+$ Year                <int> 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2…
+
+$ Gender              <chr> "Female", "Male", "Female", "Male", "Female", "Male", "Female", "Ma…
+
+$ Category            <chr> "Total", "Total", "Age", "Age", "Age", "Age", "Age", "Age", "Age", …
+
+$ Subcategory         <chr> "-", "-", "14 or younger", "14 or younger", "15", "15", "16", "16",…
+
+$ X.                  <chr> "16.20%", "13.30%", "10.80%", "9.20%", "11.20%", "9.20%", "14.80%",…
+
+$ Confidence.Interval <chr> "(12.9%-19.6%)", "(10.8%-15.8%)", "(8.8%-12.8%)", "(6.7%-11.8%)", "…
+
+$ Number.of.Students  <chr> "792", "306", "62", "25", "135", "52", "184", "79", "260", "93", "1…
