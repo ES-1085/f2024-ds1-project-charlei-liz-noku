@@ -17,6 +17,9 @@ Data was collected through a number of surveys offered in all grades/ages of Hig
 
 If we focus mainly on younger aged kids for our surveys, will the level of tobacco awareness be consistently lower?
 
+Does educationhave a direct correlation to drug use in kids/teens? Is there another factor?
+
+
 What change would be most effective in increaseing the amount of drugs (lbs) disposed of at the Drug Take-Back days?
 (Does a decrease in drugs given back mean there are less drugs on the streets?)
 
@@ -25,7 +28,7 @@ What change would be most effective in increaseing the amount of drugs (lbs) dis
 
 ## 2. Data
 
-Text goes here.
+Text goes here
 
 ```{r}
 # Code goes here
