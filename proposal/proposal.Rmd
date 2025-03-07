@@ -39,11 +39,36 @@ glimpse(smoked_data)
 
 ## 3. Data analysis plan
 
-Text goes here.
+Patterns and Relationships to explore:
 
+Smoking Behavior vs. Age:
+We will analyze how smoking behavior varies across different age groups (e.g, adolescents vs. teenagers). The hypothesis is that younger age groups may have different smoking rates and tobacco awareness compared to older groups.
 
+Smoking Behavior vs. Gender:
+We will explore the relationship between gender and smoking behavior. We will analyze whether males and females exhibit different smoking rates over time.
+
+Trends in Smoking Over Time:
+By analyzing the data across the years, we will explore how smoking rates have changed over time. This will help identify whether interventions have had an impact on smoking behavior.
+
+We will use the following types of visualizations to explore these relationships and patterns:
+
+Line Graphs / Area Charts:
+To visualize the trend of smoking behavior over time. This will help us identify patterns and assess if smoking rates have increased or decreased in recent years.
+
+Bar Charts:
+To compare smoking rates across different age groups and genders. This will allow for easy visualization of which groups have higher smoking rates.
+
+Box Plots:
+To display the distribution of smoking rates within each age group and gender, showing the range and variability of smoking behavior.
+
+Scatter Plots:
+To visualize the relationship between the amount of drugs disposed of during drug take-back days and smoking rates. This will help assess any correlation between the two behaviors.
 ```{r}
-# Code goes here
+#add the code here
+
+```
+
+
 ```
 
 
