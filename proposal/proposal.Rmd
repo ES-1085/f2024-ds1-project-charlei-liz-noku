@@ -72,7 +72,13 @@ Scatter Plots:
 To visualize the relationship between the amount of drugs disposed of during drug take-back days and smoking rates. This will help assess any correlation between the two behaviors.
 ```{r}
 #add the code here
-
+ggplot(data = smoked_data, aes = (x = Catergory, y = Confidence.Interval, colour = Gender)) +
+  geom_point() +
+  labs( title = "Smoking trends in teens", 
+        x = "Age",
+        y = "Confidence Interval") 
+  
+  
 
 ```
 
