@@ -9,10 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Charlie-Liz-Noku" />
 
 
-<title>Project proposal</title>
+<title>README</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,87 +348,59 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Project proposal</h1>
-<h4 class="author">Charlie-Liz-Noku</h4>
 
 </div>
 
 
-<pre class="r"><code>library(tidyverse)
-library(broom)</code></pre>
-<div id="introduction" class="section level2">
-<h2>1. Introduction</h2>
-<p>The Healthy Androscoggin project analyzes the Maine Integrated Youth
-Survey (MIYHS) data from 2009 in order to identify trends of activity,
-nutrition substance/drug use, and overall environmental health. The goal
-is find areas of necessary intervention and promote policy change to
-build healtheir communities in the Androscoggin Commnunity.</p>
-<p>Data was collected through a number of surveys offered in all
-grades/ages of High-School across several years. The survey asked a vast
-number of questions ranging all the way from, “Do you smoke?” to “What
-is the primary language spoken at home?”. Our dataset deals with 10
-years of data, we are choosing to focus predominantly on the results
-from smoking related questions in order to prove whether intervention is
-necessary at an educational level.</p>
-<p>If we focus mainly on younger aged kids for our surveys, will the
-level of tobacco awareness be consistently lower?</p>
-<p>What change would be most effective in increaseing the amount of
-drugs (lbs) disposed of at the Drug Take-Back days? (Does a decrease in
-drugs given back mean there are less drugs on the streets?)</p>
+<div id="data" class="section level1">
+<h1>data</h1>
+<p>Data file called 2009-2021_smoked_formatted.csv is stored within this
+Data folder.</p>
+<div id="smoked_formatted.csv" class="section level2">
+<h2>2009-2021_smoked_formatted.csv</h2>
+<ul>
+<li><code>Year</code>: Refers to the year when the survey took
+place</li>
+<li><code>Gender</code>: Refers to the gender of the person whose
+response is stored. Only possible options are Female, Male and Total,
+which represents Female and Male answers together</li>
+<li><code>Category</code>: Given the format of community-provided data,
+this variable represents specific subsection of population we are
+looking at. Possible options are Age, Grade (in scool), Race/Ethnicity
+of a specific person answering the questionnare.</li>
+<li><code>Subcategory</code>: Refers to more specific subsection of
+population within chosen category. Possible answers are specific age
+such as “14 or younger” (Age), “12”” (grade in school), “Hispanic”
+(Race/Ethnicity)</li>
+<li><code>X.</code>: Refers to the percentage of students who answered
+at least one day to the posed question. In this specific case, the
+question was: “During the past 30 days, on how many days did you smoke
+cigarettes?”</li>
+<li><code>Confidence.Interval</code>: Refers to the 95% Confidence
+Interval, which is the values within which the true smoking rate in the
+chosenpopulation is likely to fall.</li>
+<li><code>Number.of.Students</code>: Refers to the number of students
+who answered at least 1 day to the posed question (weighted).</li>
+</ul>
+<p>Below is a quick overview of the data using <code>dim()</code> and
+<code>glimpse()</code>:</p>
+<p>Rows: 205 Columns: 7</p>
+<p>glimpse()</p>
+<p>$ Year <int> 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009,
+2009, 2009, 2…</p>
+<p>$ Gender <chr> “Female”, “Male”, “Female”, “Male”, “Female”, “Male”,
+“Female”, “Ma…</p>
+<p>$ Category <chr> “Total”, “Total”, “Age”, “Age”, “Age”, “Age”, “Age”,
+“Age”, “Age”, …</p>
+<p>$ Subcategory <chr> “-”, “-”, “14 or younger”, “14 or younger”, “15”,
+“15”, “16”, “16”,…</p>
+<p>$ X. <chr> “16.20%”, “13.30%”, “10.80%”, “9.20%”, “11.20%”, “9.20%”,
+“14.80%”,…</p>
+<p>$ Confidence.Interval <chr> “(12.9%-19.6%)”, “(10.8%-15.8%)”,
+“(8.8%-12.8%)”, “(6.7%-11.8%)”, “…</p>
+<p>$ Number.of.Students <chr> “792”, “306”, “62”, “25”, “135”, “52”,
+“184”, “79”, “260”, “93”, “1…</p>
 </div>
-<div id="data" class="section level2">
-<h2>2. Data</h2>
-<pre class="r"><code>smoked_data &lt;- read.csv(&quot;/cloud/project/data/2009-2021_smoked_formatted.csv&quot;)</code></pre>
-<p>The dimension of collected data is as follows: dataset has 205 rows
-(observations) and 7 columns (variables).</p>
-<pre class="r"><code>dim(smoked_data)</code></pre>
-<pre><code>## [1] 205   7</code></pre>
-<pre class="r"><code>glimpse(smoked_data)</code></pre>
-<pre><code>## Rows: 205
-## Columns: 7
-## $ Year                &lt;int&gt; 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 20…
-## $ Gender              &lt;chr&gt; &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Mal…
-## $ Category            &lt;chr&gt; &quot;Total&quot;, &quot;Total&quot;, &quot;Age&quot;, &quot;Age&quot;, &quot;Age&quot;, &quot;Age&quot;, &quot;Age…
-## $ Subcategory         &lt;chr&gt; &quot;-&quot;, &quot;-&quot;, &quot;14 or younger&quot;, &quot;14 or younger&quot;, &quot;15&quot;, …
-## $ X.                  &lt;chr&gt; &quot;16.20%&quot;, &quot;13.30%&quot;, &quot;10.80%&quot;, &quot;9.20%&quot;, &quot;11.20%&quot;, &quot;…
-## $ Confidence.Interval &lt;chr&gt; &quot;(12.9%-19.6%)&quot;, &quot;(10.8%-15.8%)&quot;, &quot;(8.8%-12.8%)&quot;, …
-## $ Number.of.Students  &lt;chr&gt; &quot;792&quot;, &quot;306&quot;, &quot;62&quot;, &quot;25&quot;, &quot;135&quot;, &quot;52&quot;, &quot;184&quot;, &quot;79&quot;…</code></pre>
-</div>
-<div id="data-analysis-plan" class="section level2">
-<h2>3. Data analysis plan</h2>
-<p>Patterns and Relationships to explore:</p>
-<p>Smoking Behavior vs. Age: We will analyze how smoking behavior varies
-across different age groups (e.g, adolescents vs. teenagers). The
-hypothesis is that younger age groups may have different smoking rates
-and tobacco awareness compared to older groups.</p>
-<p>Smoking Behavior vs. Gender: We will explore the relationship between
-gender and smoking behavior. We will analyze whether males and females
-exhibit different smoking rates over time.</p>
-<p>Trends in Smoking Over Time: By analyzing the data across the years,
-we will explore how smoking rates have changed over time. This will help
-identify whether interventions have had an impact on smoking
-behavior.</p>
-<p>We will use the following types of visualizations to explore these
-relationships and patterns:</p>
-<p>Line Graphs / Area Charts: To visualize the trend of smoking behavior
-over time. This will help us identify patterns and assess if smoking
-rates have increased or decreased in recent years.</p>
-<p>Bar Charts: To compare smoking rates across different age groups and
-genders. This will allow for easy visualization of which groups have
-higher smoking rates.</p>
-<p>Box Plots: To display the distribution of smoking rates within each
-age group and gender, showing the range and variability of smoking
-behavior.</p>
-<p>Scatter Plots: To visualize the relationship between the amount of
-drugs disposed of during drug take-back days and smoking rates. This
-will help assess any correlation between the two behaviors.</p>
-<pre class="r"><code>#add the code here</code></pre>
-<p>```</p>
-</div>
-<div id="data-ethics-review" class="section level2">
-<h2>4. Data Ethics Review</h2>
-<p>The data ethics review section will be introduced in a separate class
-and is not part of the original proposal deadline.</p>
 </div>
 
 
