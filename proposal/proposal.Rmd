@@ -24,20 +24,13 @@ What change would be most effective in increaseing the amount of drugs (lbs) dis
 (Does a decrease in drugs given back mean there are less drugs on the streets?)
 
 
-
-
-
 ## 2. Data
 
-<<<<<<< HEAD
-Text goes here
-=======
 ```{r read-in-file}
 smoked_data <- read.csv("/cloud/project/data/2009-2021_smoked_formatted.csv")
 ```
 
 The dimension of collected data is as follows: dataset has 205 rows (observations) and 7 columns (variables). 
->>>>>>> c3b3c5e94f8aef6a2e2f9b4a9979861f6539e260
 
 ```{r dim-and-glimpse-dataframe}
 dim(smoked_data)
@@ -70,21 +63,16 @@ To display the distribution of smoking rates within each age group and gender, s
 
 Scatter Plots:
 To visualize the relationship between the amount of drugs disposed of during drug take-back days and smoking rates. This will help assess any correlation between the two behaviors.
-```{r}
+
+```{r visulasitaion-try}
+
 #add the code here
 ggplot(data = smoked_data, aes = (x = Catergory, y = Confidence.Interval, colour = Gender)) +
   geom_point() +
   labs( title = "Smoking trends in teens", 
         x = "Age",
         y = "Confidence Interval") 
-  
-  
-
 ```
-
-
-```
-
 
 ## 4. Data Ethics Review
 
