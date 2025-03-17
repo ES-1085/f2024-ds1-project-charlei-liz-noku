@@ -30,7 +30,7 @@ What change would be most effective in increaseing the amount of drugs (lbs) dis
 smoked_data <- read.csv("/cloud/project/data/2009-2021_smoked_formatted.csv")
 ```
 
-The dimension of collected data is as follows: dataset has 205 rows (observations) and 7 columns (variables). 
+The dimension of collected data is as follows: dataset has `r nrow(smoked_data)` rows (observations) and `r ncol(smoked_data)` columns (variables). 
 
 ```{r dim-and-glimpse-dataframe}
 dim(smoked_data)
