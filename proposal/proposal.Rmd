@@ -64,15 +64,34 @@ To display the distribution of smoking rates within each age group and gender, s
 Scatter Plots:
 To visualize the relationship between the amount of drugs disposed of during drug take-back days and smoking rates. This will help assess any correlation between the two behaviors.
 
-```{r visulasitaion-try}
 
-#add the code here
-ggplot(data = smoked_data, aes = (x = Catergory, y = Confidence.Interval, colour = Gender)) +
-  geom_point() +
-  labs( title = "Smoking trends in teens", 
-        x = "Age",
-        y = "Confidence Interval") 
+
+#### Visualisation number 1
+
+```{r visulasitaion-try, message=FALSE, warning=FALSE}
+smoked_data_fixed <- smoked_data |> 
+  filter(Category == "Age") |> 
+  filter(Gender %in% c("Female","Male")) |>
+  mutate(
+    Percent_Numeric = as.numeric(gsub("%", "", X.)),  #used to be chronically, had to look up online ow to convert to numeric
+    Percent_Bin = case_when(
+      Percent_Numeric <= 10  ~ "0-10%",
+      Percent_Numeric <= 20  ~ "11-20%",
+      Percent_Numeric <= 30  ~ "21-30%",
+      Percent_Numeric <= 40  ~ "31-40%",
+      Percent_Numeric >  40  ~ "41-50%"
+    )
+  )
+
+ggplot(data = smoked_data_fixed, aes(x = reorder(Subcategory, Percent_Numeric), y = Percent_Numeric, fill = Gender)) +
+  geom_col(position = "dodge") +  # Bar chart instead of points
+  labs(title = "Percentage of Teens Who Smoked at Least One Day in the Past 30 Days", 
+       subtitle = "Based on self-reported responses to the question:\nDuring the past 30 days, on how many days did you smoke cigarettes?",
+       x = "Age Group",
+       y = "Percent") +
+  theme_minimal() 
 ```
+
 
 ## 4. Data Ethics Review
 
