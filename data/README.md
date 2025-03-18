@@ -1,6 +1,6 @@
 # data
 
-Data file called 2009-2021_smoked_formatted.csv is stored within this Data folder. 
+Data files called 2009-2021_smoked_formatted.csv and Total_drug_weight.csv is stored within this Data folder. 
 
 ## 2009-2021_smoked_formatted.csv
 
@@ -31,3 +31,27 @@ $ X.                  <chr> "16.20%", "13.30%", "10.80%", "9.20%", "11.20%", "9.
 $ Confidence.Interval <chr> "(12.9%-19.6%)", "(10.8%-15.8%)", "(8.8%-12.8%)", "(6.7%-11.8%)", "…
 
 $ Number.of.Students  <chr> "792", "306", "62", "25", "135", "52", "184", "79", "260", "93", "1…
+
+
+## Total_drug_weight.csv 
+
+- `Year`: Refers to the year when the data was collected
+
+- `April`: Represents total lbs. of medications collected during Free Drug Take Back Events	in April
+
+- `October`: Represents total lbs. of medications collected during Free Drug Take Back Events	in October
+
+- `Total`: Total lbs. of medications collected during Free Drug Take Back Events		
+
+Below is a quick overview of the data using `dim()` and `glimpse()`:
+
+Rows: 16
+Columns: 4
+
+$ Year    <chr> "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2019…
+
+$ April   <chr> "1110", "1890", "1527", "2301", "1695", "1044", "1108", "1043", "1020", "0", …
+
+$ October <chr> "1547", "1437", "1465", "991", "1500", "0", "1300", "841", "3064", "3064", "3…
+
+$ Total   <chr> "2657", "3327", "2992", "3292", "3195", "1044", "2408", "1884", "4084", "3064…

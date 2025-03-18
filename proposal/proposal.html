@@ -381,9 +381,14 @@ drugs given back mean there are less drugs on the streets?)</p>
 </div>
 <div id="data" class="section level2">
 <h2>2. Data</h2>
-<pre class="r"><code>smoked_data &lt;- read.csv(&quot;/cloud/project/data/2009-2021_smoked_formatted.csv&quot;)</code></pre>
-<p>The dimension of collected data is as follows: dataset has 205 rows
-(observations) and 7 columns (variables).</p>
+<pre class="r"><code>smoked_data &lt;- read.csv(&quot;/cloud/project/data/2009-2021_smoked_formatted.csv&quot;)
+drug_data &lt;- read.csv(&quot;/cloud/project/data/Total_drug_weight.csv&quot;)</code></pre>
+<pre class="r"><code>drug_data &lt;- drug_data[-1,]
+colnames(drug_data) &lt;- c(&quot;Year&quot;,&quot;April&quot;,&quot;October&quot;,&quot;Total&quot;)</code></pre>
+<p>The dimension of collected data is as follows: dataset
+<code>smoked_data</code> has 205 rows (observations) and 7 columns
+(variables). The dataset <code>drug_data</code> has 17 observations and
+4 variables.</p>
 <pre class="r"><code>dim(smoked_data)</code></pre>
 <pre><code>## [1] 205   7</code></pre>
 <pre class="r"><code>glimpse(smoked_data)</code></pre>
@@ -396,6 +401,15 @@ drugs given back mean there are less drugs on the streets?)</p>
 ## $ X.                  &lt;chr&gt; &quot;16.20%&quot;, &quot;13.30%&quot;, &quot;10.80%&quot;, &quot;9.20%&quot;, &quot;11.20%&quot;, &quot;…
 ## $ Confidence.Interval &lt;chr&gt; &quot;(12.9%-19.6%)&quot;, &quot;(10.8%-15.8%)&quot;, &quot;(8.8%-12.8%)&quot;, …
 ## $ Number.of.Students  &lt;chr&gt; &quot;792&quot;, &quot;306&quot;, &quot;62&quot;, &quot;25&quot;, &quot;135&quot;, &quot;52&quot;, &quot;184&quot;, &quot;79&quot;…</code></pre>
+<pre class="r"><code>dim(drug_data)</code></pre>
+<pre><code>## [1] 17  4</code></pre>
+<pre class="r"><code>glimpse(drug_data)</code></pre>
+<pre><code>## Rows: 17
+## Columns: 4
+## $ Year    &lt;chr&gt; &quot;2010&quot;, &quot;2011&quot;, &quot;2012&quot;, &quot;2013&quot;, &quot;2014&quot;, &quot;2015&quot;, &quot;2016&quot;, &quot;2017&quot;…
+## $ April   &lt;chr&gt; &quot;300&quot;, &quot;1110&quot;, &quot;1890&quot;, &quot;1527&quot;, &quot;2301&quot;, &quot;1695&quot;, &quot;1044&quot;, &quot;1108&quot;,…
+## $ October &lt;chr&gt; &quot;380&quot;, &quot;1547&quot;, &quot;1437&quot;, &quot;1465&quot;, &quot;991&quot;, &quot;1500&quot;, &quot;0&quot;, &quot;1300&quot;, &quot;84…
+## $ Total   &lt;chr&gt; &quot;680&quot;, &quot;2657&quot;, &quot;3327&quot;, &quot;2992&quot;, &quot;3292&quot;, &quot;3195&quot;, &quot;1044&quot;, &quot;2408&quot;,…</code></pre>
 </div>
 <div id="data-analysis-plan" class="section level2">
 <h2>3. Data analysis plan</h2>
