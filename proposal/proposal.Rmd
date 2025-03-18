@@ -17,7 +17,7 @@ Data was collected through a number of surveys offered in all grades/ages of Hig
 
 If we focus mainly on younger aged kids for our surveys, will the level of tobacco awareness be consistently lower?
 
-Does educationhave a direct correlation to drug use in kids/teens? Is there another factor?
+By the end of this study can we infer that level of education has a direct correlation to drug knowledge/use in kids/teens? Similarly does the school curriculum, region, or funding strongly impact whether their students use drugs?
 
 
 What change would be most effective in increaseing the amount of drugs (lbs) disposed of at the Drug Take-Back days?
@@ -44,6 +44,14 @@ dim(smoked_data)
 glimpse(smoked_data)
 ```
 
+```{r}
+smoked_data <- smoked_data |>
+  mutate(Percentage = as.numeric(str_extract(`X.`, pattern = "\\d+.\\d+")),
+         Lower_CI = as.numeric(str_extract(`Confidence.Interval`, pattern = "\\d+.\\d+")),
+         Upper_CI = as.numeric(str_extract(str_extract(`Confidence.Interval`, pattern = "-\\s*(\\d+\\.\\d+)"), pattern = "\\d+\\.\\d+")))
+```
+
+
 ## 3. Data analysis plan
 
 Patterns and Relationships to explore:
@@ -55,7 +63,7 @@ Smoking Behavior vs. Gender:
 We will explore the relationship between gender and smoking behavior. We will analyze whether males and females exhibit different smoking rates over time.
 
 Trends in Smoking Over Time:
-By analyzing the data across the years, we will explore how smoking rates have changed over time. This will help identify whether interventions have had an impact on smoking behavior.
+By analyzing the data across the years, we will explore how smoking rates have changed over time. This will help identify if factors like policy change and drug awareness have had an impact on smoking behavior.
 
 We will use the following types of visualizations to explore these relationships and patterns:
 
@@ -72,11 +80,11 @@ Scatter Plots:
 To visualize the relationship between the amount of drugs disposed of during drug take-back days and smoking rates. This will help assess any correlation between the two behaviors.
 ```{r}
 #add the code here
-ggplot(data = smoked_data, aes = (x = Catergory, y = Confidence.Interval, colour = Gender)) +
+ggplot(data = smoked_data, aes(x = Category, y = as.numeric(`X.`), colour = Gender)) +
   geom_point() +
   labs( title = "Smoking trends in teens", 
         x = "Age",
-        y = "Confidence Interval") 
+        y = "Percentage") 
   
   
 
