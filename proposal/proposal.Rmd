@@ -85,7 +85,7 @@ smoked_data_fixed <- smoked_data |>
 
 ggplot(data = smoked_data_fixed, aes(x = reorder(Subcategory, Percent_Numeric), y = Percent_Numeric, fill = Gender)) +
   geom_col(position = "dodge") +  # Bar chart instead of points
-  labs(title = "Percentage of Teens Who Smoked at Least One Day in the Past 30 Days", 
+  labs(title = "Percentage of Teens Who Smoked at Least One Day \nin the Past 30 Days Across 2009-2021", 
        subtitle = "Based on self-reported responses to the question:\nDuring the past 30 days, on how many days did you smoke cigarettes?",
        x = "Age Group",
        y = "Percent") +
