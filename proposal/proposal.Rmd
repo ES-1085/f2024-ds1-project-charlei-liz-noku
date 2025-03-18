@@ -24,23 +24,32 @@ What change would be most effective in increaseing the amount of drugs (lbs) dis
 (Does a decrease in drugs given back mean there are less drugs on the streets?)
 
 
-
-
-
 ## 2. Data
 
+<<<<<<< HEAD
 Text goes here
 =======
+=======
+>>>>>>> a4eceb2ba0cc04f191e6b3b4e6295897e6ea7bd7
 ```{r read-in-file}
 smoked_data <- read.csv("/cloud/project/data/2009-2021_smoked_formatted.csv")
+drug_data <- read.csv("/cloud/project/data/Total_drug_weight.csv")
 ```
 
-The dimension of collected data is as follows: dataset has 205 rows (observations) and 7 columns (variables). 
->>>>>>> c3b3c5e94f8aef6a2e2f9b4a9979861f6539e260
+```{r rename-col-drug-data}
+drug_data <- drug_data[-1,]
+colnames(drug_data) <- c("Year","April","October","Total")
+```
+
+
+The dimension of collected data is as follows: dataset `smoked_data` has `r nrow(smoked_data)` rows (observations) and `r ncol(smoked_data)` columns (variables). The dataset `drug_data` has `r nrow(drug_data)` observations and `r ncol(drug_data)` variables.
 
 ```{r dim-and-glimpse-dataframe}
 dim(smoked_data)
 glimpse(smoked_data)
+
+dim(drug_data)
+glimpse(drug_data)
 ```
 
 ```{r}
@@ -77,6 +86,7 @@ To display the distribution of smoking rates within each age group and gender, s
 
 Scatter Plots:
 To visualize the relationship between the amount of drugs disposed of during drug take-back days and smoking rates. This will help assess any correlation between the two behaviors.
+
 ```{r}
 #add the code here
 ggplot(data = smoked_data, aes(x = Category, y = as.numeric(`X.`), colour = Gender)) +
@@ -85,11 +95,35 @@ ggplot(data = smoked_data, aes(x = Category, y = as.numeric(`X.`), colour = Gend
         x = "Age",
         y = "Percentage") 
   
-  
-
 ```
 
 
+
+
+#### Visualisation number 1
+
+```{r visulasitaion-try, message=FALSE, warning=FALSE}
+smoked_data_fixed <- smoked_data |> 
+  filter(Category == "Age") |> 
+  filter(Gender %in% c("Female","Male")) |>
+  mutate(
+    Percent_Numeric = as.numeric(gsub("%", "", X.)),  #used to be chronically, had to look up online ow to convert to numeric
+    Percent_Bin = case_when(
+      Percent_Numeric <= 10  ~ "0-10%",
+      Percent_Numeric <= 20  ~ "11-20%",
+      Percent_Numeric <= 30  ~ "21-30%",
+      Percent_Numeric <= 40  ~ "31-40%",
+      Percent_Numeric >  40  ~ "41-50%"
+    )
+  )
+
+ggplot(data = smoked_data_fixed, aes(x = Subcategory, y = Percent_Numeric, fill = Gender)) +
+  geom_col(position = "dodge") +
+  labs(title = "Percentage of Teens Who Smoked at Least One Day \nin the Past 30 Days (Across 2009-2021 surveys)", 
+       subtitle = "Based on self-reported responses to the question:\nDuring the past 30 days, on how many days did you smoke cigarettes?",
+       x = "Age Group",
+       y = "Percent") +
+  theme_minimal() 
 ```
 
 
