@@ -29,7 +29,6 @@ What change would be most effective in increaseing the amount of drugs (lbs) dis
 
 ## 2. Data
 
-<<<<<<< HEAD
 Text goes here
 =======
 ```{r read-in-file}
