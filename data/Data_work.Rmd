@@ -85,40 +85,4 @@ ggsave("plot_review2.png")
 
 ```
 
-```{r}
-library(tidyverse)
-
-# Pivot data longer for ggplot
-drug_long <- drug_without_total %>%
-  pivot_longer(cols = c("April", "October"),
-               names_to = "Month",
-               values_to = "Pounds")
-
-# Plot
-ggplot(drug_long, aes(x = factor(Year), y = Pounds, group = Month, color = Month)) +
-  geom_line(size = 1.3) +
-  geom_point(size = 2) +
-  geom_text(aes(label = Pounds), 
-            vjust = -0.6, 
-            fontface = "bold", 
-            size = 3, 
-            show.legend = FALSE) +
-  scale_color_manual(values = c("April" = "red", "October" = "steelblue")) +
-  labs(
-    title = "Total lbs. of medications collected during Drug Take Back Events",
-    subtitle = "April and October, 2010–2024",
-    x = "Year", y = "Pounds (lb)", color = "Month"
-  ) +
-  scale_y_continuous(labels = scales::comma) +
-  theme_minimal(base_size = 13) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.title = element_text(face = "bold", size = 16),
-    plot.subtitle = element_text(size = 12),
-    legend.title = element_text(face = "bold"),
-    panel.grid.minor = element_blank()
-  )
-
-```
-
 
