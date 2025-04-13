@@ -26,11 +26,11 @@ What change would be most effective in increaseing the amount of drugs (lbs) dis
 
 ## 2. Data
 
-<<<<<<< HEAD
+
 Text goes here
 =======
 =======
->>>>>>> a4eceb2ba0cc04f191e6b3b4e6295897e6ea7bd7
+
 ```{r read-in-file}
 smoked_data <- read.csv("/cloud/project/data/2009-2021_smoked_formatted.csv")
 drug_data <- read.csv("/cloud/project/data/Total_drug_weight.csv")
