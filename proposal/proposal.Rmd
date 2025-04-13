@@ -88,16 +88,14 @@ Scatter Plots:
 To visualize the relationship between the amount of drugs disposed of during drug take-back days and smoking rates. This will help assess any correlation between the two behaviors.
 
 ```{r}
-#add the code here
-ggplot(data = smoked_data, aes(x = Category, y = as.numeric(`X.`), colour = Gender)) +
+ggplot(data = smoked_data, aes(x = Category, y = Percentage)) +
   geom_point() +
+  facet_wrap(~Gender)
   labs( title = "Smoking trends in teens", 
         x = "Age",
         y = "Percentage") 
   
 ```
-
-
 
 
 #### Visualisation number 1
@@ -129,5 +127,8 @@ ggplot(data = smoked_data_fixed, aes(x = Subcategory, y = Percent_Numeric, fill 
 
 ## 4. Data Ethics Review
 
-The data ethics review section will be introduced in a separate class and is not part of the original proposal deadline.
+Our project examines smoking behaviors among teenagers, but several data ethical considerations must be considered One key limitation is potential bias in responses, as teenagers may underreport or misrepresent their smoking habits. Additionally, the location of data collection influences results, as different areas have social norms and experiences, it is important to acknowledge that our data represents Maine only. Moreover, our data is not divided by school or district, and thus, data is a summary. 
 
+Despite these challenges, the data can provide valuable insights by identifying trends and common factors among those who smoke and those who do not. This information could inform public health initiatives while maintaining participant anonymity.
+
+However, there is a risk of reinforcing stereotypes or overgeneralizing certain demographics. To minimize this, we aim to be transparent about our data’s limitations and ensure careful interpretation of results. By clearly defining what our findings do and do not imply, and avoiding broad generalization we hope to contribute to a more responsible and ethical analysis of smoking behaviors.
