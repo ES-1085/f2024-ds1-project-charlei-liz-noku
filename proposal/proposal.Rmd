@@ -123,7 +123,43 @@ ggplot(data = smoked_data_fixed, aes(x = Subcategory, y = Percent_Numeric, fill 
        y = "Percent") +
   theme_minimal() 
 ```
+```{r Visualization_1_Charlie}
+smoking_heatmap <- smoked_data |> 
+  filter(Category == "Age", !is.na(Percentage)) |> 
+  mutate(Year = as.factor(Year))
 
+
+ggplot(smoking_heatmap, aes(x = Year, y = Subcategory, fill = Percentage)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "yellow", high = "red", na.value = "grey") +
+  labs(
+    title = "Heatmap of Smoking Percentage by Age Group and Year",
+    x = "Survey Year",
+    y = "Age Group",
+    fill = "Smoking %"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+```
+```{r Visualization_2_Charlie}
+
+smoking_trend <- smoked_data |>
+  filter(Category == "Total", Gender %in% c("Female", "Male")) |>
+  mutate(Percentage = as.numeric(str_extract(X., "\\d+\\.\\d+")))
+
+
+ggplot(smoking_trend, aes(x = Year, y = Percentage, color = Gender)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  labs(title = "Smoking Rates Over Time by Gender",
+       x = "Year",
+       y = "Percentage of Students Who Smoked") +
+  scale_color_manual(values = c("Female" = "pink", "Male" = "blue")) +
+  theme_minimal()
+
+```
 
 ## 4. Data Ethics Review
 
