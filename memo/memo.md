@@ -128,47 +128,190 @@ smoke_data <- bind_rows(df_2009, df_2013, df_2015, df_2017, df_2019, df_2021)
 
 ## Plots
 
-You will want to document choices you’ve made that were intentional for
-your graphic, e.g. color you’ve chosen for the plot. Think of this
-document as a code script someone can follow to reproduce the data
-cleaning steps and graphics in your handout.
+The color scheme was selected with accessibilty in mind. Specifically,
+we chose to use Brewer R library.
 
-### ggsave example for saving plots
-
-``` r
-p1 <- starwars |>
-  filter(mass < 1000, 
-         species %in% c("Human", "Cerean", "Pau'an", "Droid", "Gungan")) |>
-  ggplot() +
-  geom_point(aes(x = mass, 
-                 y = height, 
-                 color = species)) +
-  labs(x = "Weight (kg)", 
-       y = "Height (m)",
-       color = "Species",
-       title = "Weight and Height of Select Starwars Species",
-       caption = paste("This data comes from the starwars api: https://swapi.py43.com"))
-
-
-ggsave("example-starwars.png", width = 4, height = 4)
-
-ggsave("example-starwars-wide.png", width = 6, height = 4)
-```
-
-### Plot 1: \_\_\_\_\_\_\_\_\_
+### Plot 1: Percentage of teens who smoked at least once in the past 30 days by Age
 
 #### Data cleanup steps specific to plot 1
 
-These data cleaning sections are optional and depend on if you have some
-data cleaning steps specific to a particular plot
+Since our data is hard to work with as a whole, we filter it
+specifically to include only Totals for all age groups, meaning data
+points that are not separated by gender.
+
+``` r
+total_age_df <- smoke_data |>
+  filter(group_type == "Age", gender == "total")
+```
 
 #### Final Plot 1
 
-### Plot 2: \_\_\_\_\_\_\_\_\_
+``` r
+ggplot(total_age_df, aes(x = year, y = percent, color = subgroup, group = subgroup)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_color_brewer(palette = 3, 
+                     type = "qual",
+                     guide = guide_legend(reverse = TRUE)) +
+  scale_x_continuous(breaks = c(2009, 2011, 2013, 2015, 2017, 2019, 2021)) +
+  geom_vline(xintercept = 2014, color = "darkgray", linetype = "dashed") +
+  annotate("text", x = 2014, y = Inf, label = "E-cigarettes surpass \nconventional cigarettes \namong U.S. youth", vjust = 2, hjust = 0.5, size = 3.3) +
+  labs(
+    title = "Percentage of teens who smoked at least once in the past 30 days",
+    subtitle = "Based on self-reported responses across 2009-2021 surveys",
+    x = "Year",
+    y = "Percent",
+    color = "Age Subgroup"
+  ) + 
+    theme_minimal()
+```
 
-### Plot 3: \_\_\_\_\_\_\_\_\_\_\_
+    ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+    ## ℹ Please use `linewidth` instead.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
 
-Add more plot sections as needed. Each project should have at least 3
-plots, but talk to me if you have fewer than 3.
+    ## Warning: Removed 1 row containing missing values or values outside the scale range
+    ## (`geom_line()`).
 
-### Plot 4: \_\_\_\_\_\_\_\_\_\_\_
+    ## Warning: Removed 1 row containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+<img src="memo_files/figure-gfm/total-smoke-plot-by-age-1.png" alt="Line graph showing age-based trends in youth smoking in Androscoggin County from 2009 to 2021. The x-axis represents survey years, and the y-axis shows the percentage of teens who reported smoking at least once in the past 30 days. The graph includes five age subgroups: 14 or younger, 15, 16, 17, and 18 or older. The chart is included to illustrate how smoking rates vary by age and have changed over time. Older teens (18+) consistently had the highest smoking rates, peaking at 26% in 2009 and declining to about 10% in 2021, with a slight increase in 2017. All age groups show a general decline in smoking, with the youngest group reporting the lowest rates throughout. A vertical line in 2014 marks when e-cigarette use surpassed traditional cigarettes among U.S. youth, contextualizing a key shift in nicotine use behavior."  />
+
+``` r
+ggsave("plot1.png", bg = "white")
+```
+
+    ## Saving 7 x 5 in image
+
+    ## Warning: Removed 1 row containing missing values or values outside the scale range
+    ## (`geom_line()`).
+    ## Removed 1 row containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+### Plot 2: Percentage of teens who smoked at least once in the past 30 days by Race/Ethnicity
+
+#### Data cleanup steps specific to plot 2
+
+Since our data is hard to work with as a whole, we filter it
+specifically to include only Totals for all age groups, meaning data
+points that are not separated by gender. Then, we filter it by Race and
+Etnnicity.
+
+``` r
+total_race_df <- smoke_data |>
+  filter(group_type == "Race/Ethnicity", gender == "total")
+```
+
+#### Final Plot 2
+
+``` r
+cleaned_df <- total_race_df %>%
+  mutate(subgroup = str_replace_all(subgroup, fixed("**"), "")) |>
+  filter(subgroup %in% c("American Indian or Alaskan Native", "White", "Hispanic", "Black or African American", "Asian"))
+
+ggplot(cleaned_df, aes(x = year, y = percent, color = subgroup, group = subgroup)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_color_brewer(palette = 3, 
+                     type = "qual",
+                     guide = guide_legend(reverse = TRUE)) +
+  scale_x_continuous(breaks = c(2009, 2011, 2013, 2015, 2017, 2019, 2021)) +
+  labs(
+    title = "Percentage of teens who smoked at least once in the past 30 days",
+    subtitle = "Based on self-reported responses across 2009-2021 surveys",
+    x = "Year",
+    y = "Percent",
+    color = "Race/Ethnicity"
+  ) + 
+    theme_minimal()
+```
+
+    ## Warning: Removed 2 rows containing missing values or values outside the scale range
+    ## (`geom_line()`).
+
+    ## Warning: Removed 4 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+<img src="memo_files/figure-gfm/total-smoked-plot-race-1.png" alt="Line graph displaying trends in youth smoking rates by race and ethnicity in Androscoggin County from 2009 to 2021. The x-axis represents survey years, while the y-axis shows the percentage of teens who reported smoking at least once in the past 30 days. The chart includes separate lines for five racial and ethnic groups: White, Hispanic, Black or African American, Asian, and American Indian or Alaskan Native. The purpose of this chart is to highlight disparities in smoking behavior among different racial groups. While overall smoking rates declined over time, Hispanic and American Indian or Alaskan Native youth consistently reported higher smoking rates than their peers, signaling the need for more targeted public health interventions."  />
+
+``` r
+ggsave("plot2.png", bg = "white")
+```
+
+    ## Saving 7 x 5 in image
+
+    ## Warning: Removed 2 rows containing missing values or values outside the scale range
+    ## (`geom_line()`).
+    ## Removed 4 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+### Plot 3: Youth Smoking Rates in 2009 vs 2021 by Gender and Age
+
+#### Data cleanup steps specific to plot 2
+
+Since our data is hard to work with as a whole, we filter it
+specifically to include only Female and Male data points for all age
+groups. Then, we subset it to include only years 2009 and 2021 for
+easier comparison.
+
+``` r
+male_female_df <- smoke_data |>
+  filter(group_type == "Age", gender != "total")
+
+df_filtered <- male_female_df %>%
+  filter(year %in% c(2009, 2021))
+```
+
+#### Final Plot 3
+
+``` r
+ggplot(df_filtered, aes(x = subgroup, y = percent, fill = factor(year))) +
+  geom_col(position = position_dodge(width = 0.9), width = 0.8) +
+  facet_wrap(~ gender) +
+  geom_text(aes(label = paste0(percent, "%")),
+            position = position_dodge(width = 0.9),
+            vjust = -0.5,
+            color = "black",
+            size = 3.5) +
+  scale_fill_manual(values = c("2009" = "#C77CFF", "2021" = "#00BFC4")) +
+  labs(
+    title = "Youth Smoking Rates in 2009 vs 2021 by Gender and Age",
+    x = "Age Group",
+    y = "Percent Who Reported Smoking",
+    fill = "Year"
+  ) +
+  theme_minimal() +
+  theme(
+  legend.position = c(0.075, 0.83),
+  legend.background = element_rect(fill = "lightgray", color = NA),
+)
+```
+
+    ## Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
+    ## 3.5.0.
+    ## ℹ Please use the `legend.position.inside` argument of `theme()` instead.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
+
+    ## Warning: Removed 2 rows containing missing values or values outside the scale range
+    ## (`geom_col()`).
+
+    ## Warning: Removed 2 rows containing missing values or values outside the scale range
+    ## (`geom_text()`).
+
+<img src="memo_files/figure-gfm/smore-rate-gender-plot-1.png" alt="rouped bar chart comparing youth smoking rates in 2009 and 2021 across different age groups, separated by gender. The x-axis represents age groups (14 or younger, 15, 16, 17, and 18 or older), and the y-axis shows the percentage of teens who reported smoking at least once in the past 30 days. Purple bars represent 2009 data, and teal bars represent 2021 data. The chart is divided into two panels: female on the left and male on the right. The purpose of this visualization is to show both the overall decline in smoking over time and the persistent age and gender differences. In both 2009 and 2021, older teens reported the highest rates, with 18+ males reaching nearly 29% in 2009. By 2021, all groups saw major declines, though smoking remained more common among older male teens than younger or female groups."  />
+
+``` r
+ggsave("plot3.png", bg = "white")
+```
+
+    ## Saving 7 x 5 in image
+
+    ## Warning: Removed 2 rows containing missing values or values outside the scale range
+    ## (`geom_col()`).
+    ## Removed 2 rows containing missing values or values outside the scale range
+    ## (`geom_text()`).
