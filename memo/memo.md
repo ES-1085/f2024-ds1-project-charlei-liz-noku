@@ -27,7 +27,7 @@ and change of column names to be consistent across years.
 During this step we downloaded all CSV files representing smoke data for
 year 2009, 2013, 2015, 2017, 2019, and 2021.
 
-### Step 3: Data Cleaning with R
+### Step 4: Data Cleaning with R
 
 Initially, we tried to clean each `smoke[year].csv` data file
 separately, which involved a lot of copy-pasting of the same code. Thus,
@@ -101,7 +101,7 @@ clean_data <- function(file_path, year) {
 }
 ```
 
-### Step 4: Call Function on All CSV Files
+### Step 5: Call Function on All CSV Files
 
 In this step, we use the function outlined above to clean each
 `smoke[year].csv` file separately.
@@ -115,7 +115,7 @@ df_2019 <- clean_data("/cloud/project/data/smoke2019.csv", 2019)
 df_2021 <- clean_data("/cloud/project/data/smoke2021.csv", 2021)
 ```
 
-### Step 5: Combine Each Year’s Dataframe into a Single Dataframe
+### Step 6: Combine Each Year’s Dataframe into a Single Dataframe
 
 Lastly, we combine all dataframes we have recieved through the process
 of cleaning into a single dataframe called `smoke_data`.
@@ -250,7 +250,7 @@ ggsave("plot2.png", bg = "white")
 
 ### Plot 3: Youth Smoking Rates in 2009 vs 2021 by Gender and Age
 
-#### Data cleanup steps specific to plot 2
+#### Data cleanup steps specific to plot 3
 
 Since our data is hard to work with as a whole, we filter it
 specifically to include only Female and Male data points for all age
