@@ -27,7 +27,7 @@ Our analysis revealed persistent disparities in smoking rates across racial and 
 
 Several important policies intersect with these trends. In 2019, Maine passed a Tobacco 21 law, raising the legal age to purchase tobacco products from 18 to 21. While causation is hard to determine, the decline in youth smoking that follows this law is promising.
 
-Equally important is the cultural shift surrounding vaping. The rise of social media marketing for e-cigarettes around 2014–2017 coincided with a temporary pause, or even reversal, in smoking declines for some groups. This may suggest that while cigarette use dropped, nicotine use continued in another way.
+Equally important is the cultural shift surrounding vaping. The rise of social media marketing for e-cigarettes around 2014–2017 happened at the same time with a temporary pause, or even reversal, in smoking declines for some groups. This may suggest that while cigarette use dropped, nicotine use continued in another way.
 
 ### Limitations
 
@@ -35,7 +35,7 @@ While this analysis provides valuable insights, several limitations affect inter
 
 - Uneven Sample Sizes: Some racial groups, such as White youth, are overrepresented in the MIYHS dataset, while others, like Asian or American Indian or Alaskan Native youth, have far fewer responses. This limits the generalizability and accuracy of patterns observed in underrepresented groups.
   
-- Missing Data: Not all demographic groups are represented consistently across survey years, leading to gaps in longitudinal tracking.
+- Missing Data: Not all demographic groups are represented consistently across survey years, leading to gaps in data tracking.
 
 - Self-Reported Behavior: All responses are self-reported, which introduces potential bias due to underreporting or overreporting.
 
@@ -43,7 +43,7 @@ While this analysis provides valuable insights, several limitations affect inter
 
 - Broad Demographic Categories: Some groups are categorized too broadly, potentially obscuring meaningful within-group differences.
 
-- Local Focus: Findings are specific to Androscoggin County and may not reflect statewide or national trends.
+- Local Focus: Findings are specific to Androscoggin County and may not reflect statewide or national trends. Thus, our findings should not be used to generalize smoking patterns across different populations outside of the Androscoggin County.
 
 ### Future Directions
 
