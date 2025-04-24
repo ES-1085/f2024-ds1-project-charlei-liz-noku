@@ -19,7 +19,7 @@ Our presentation can be found [here](handout/handout.pdf). You can update the fi
 
 ## Memo
 
-A link to the code and how we created our graphics in our memo can be found [here](memo/memo.html).
+A link to the code and how we created our graphics in our memo can be found [here](memo/memo.md).
 
 ## Data
 
