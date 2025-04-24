@@ -67,5 +67,9 @@ Maine Department of Health and Human Services. (2021). Maine Integrated Youth He
 
 ## References
 
-List any references here. You should, at a minimum, list your data
-source.
+- Centers for Disease Control and Prevention. (2024). Youth and tobacco use. U.S. Department of Health and Human Services.
+Retrieved from https://www.cdc.gov/tobacco/php/data-statistics/youth-data-tobacco/index.html
+- Maine State Legislature. (2019). Title 22, §1555-B: Sale of tobacco products. Maine Revised Statutes.
+Retrieved from https://legislature.maine.gov/statutes/22/title22sec1555-B.html
+- U.S. Department of Health and Human Services. (2016). E-cigarette use among youth and young adults: A report of the Surgeon General. Atlanta, GA: U.S. Department of Health and Human Services, Centers for Disease Control and Prevention, National Center for Chronic Disease Prevention and Health Promotion, Office on Smoking and Health.
+Retrieved from https://www.ncbi.nlm.nih.gov/books/NBK538684/
