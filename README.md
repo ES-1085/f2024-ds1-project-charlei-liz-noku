@@ -63,10 +63,7 @@ A link to the code and how we created our graphics in our memo can be found [her
 
 ## Data
 
-Include a citation for your data here. See
-<http://libraryguides.vu.edu.au/c.php?g=386501&p=4347840> for guidance
-on proper citation for datasets. If you got your data off the web, make
-sure to note the retrieval date.
+Maine Department of Health and Human Services. (2021). Maine Integrated Youth Health Survey (MIYHS): Androscoggin County high school report – Detailed comparisons by gender, age, grade, Hispanic ethnicity, and race. Provided by community partner on February 25, 2025.
 
 ## References
 
