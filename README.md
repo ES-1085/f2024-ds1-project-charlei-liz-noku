@@ -52,11 +52,11 @@ This project opens several avenues for further research. First, integrating vape
 ### Conclusion
 
 While youth smoking in Androscoggin County has declined substantially since 2009, the story is not over. Continuous data tracking, equitable policy design, and youth-centered education are essential as we look toward a smoke-free future for all.
-================
+
 ## Handout
 
 Our presentation can be found [here](handout/handout.pdf). You can update the filename and extension of your handout.
-================
+
 ## Memo
 
 A link to the code and how we created our graphics in our memo can be found [here](memo/memo.md).
